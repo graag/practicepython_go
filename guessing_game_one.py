@@ -3,9 +3,15 @@ import random
 def game():
     num = random.randrange(1, 101)
 
-    while(True):
-        inp = input("Podaj liczbe od 1 do 100 ('x', zeby zakonczyc): ")
-        if inp == 'x':
+    while True:
+        while True:
+            try:
+                inp = int(input("Podaj liczbe od 1 do 100 ('0', zeby zakonczyc): "))
+                break
+            except(ValueError):
+                print("Nieprawidlowo podana liczba")
+
+        if inp == 0:
             break
         else:
             inp = int(inp)
@@ -20,10 +26,8 @@ def game():
         else:
             print("Za duzo")
 
-
-
-
 while(True):
     game()
+
     if input("Nowa gra? ('t') ") != 't':
         break

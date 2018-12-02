@@ -12,7 +12,8 @@ def generate(list, length):
 generate(a, random.randrange(min_length, max_length))
 generate(b, random.randrange(min_length, max_length))
 
-overlap = set([element for element in a if element in b])
+#overlap = set([element for element in a if element in b])
+overlap = set.intersection(set(a), set(b))
 
 print("a = ", end = "")
 print(*a, sep = ", ")

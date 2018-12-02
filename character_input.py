@@ -9,7 +9,14 @@
 import datetime
 
 name = input("Podaj imie: ")
-age = int(input("Podaj wiek: "))
+
+while True:
+    try:
+        age = int(input("Podaj wiek: "))
+        break
+    except ValueError:
+        print("Wiek to LICZBA")
+        
 year = datetime.datetime.now().year - age + 100
 
 num = int(input("Liczba powtorzen: "))

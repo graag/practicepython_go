@@ -11,5 +11,14 @@ def fibonacci(num):
             seq.append(seq[i - 1] + seq[i - 2])
     return seq
 
-f = fibonacci(int(input("Podaj dlugosc sekwencji: ")))
-print(*f, sep = ", ")
+try:
+    len = int(input("Podaj dlugosc sekwencji: "))
+    
+    if(len > 0):
+        f = fibonacci(len)
+        print(*f, sep = ", ")
+    else:
+        raise ValueError
+
+except(ValueError):
+    print("Nieprawidlowo podana dlugosc")
