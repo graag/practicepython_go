@@ -1,10 +1,10 @@
-dict = {"kamien": 0, "papier": 1, "nozyce": 2}
+moves = {"kamien": 0, "papier": 1, "nozyce": 2}
 
 def game(play1, play2):
-    if play1 not in dict or play2 not in dict:
+    if play1 not in moves or play2 not in moves:
         print("Spojrz na tytul gry")
         return
-    if (dict.get(play1) + 1)%3 == dict.get(play2):
+    if (moves[play1] + 1)%3 == moves[play2]:
         print("Wygral gracz 2")
     elif play1 == play2:
         print("Remis")

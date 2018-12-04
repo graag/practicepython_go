@@ -1,6 +1,6 @@
 import random
 max_length = 20
-elem_range = 10 #do generowania list
+elem_range = 5 #do generowania list
 
 def generate(length):
     l = []
@@ -9,17 +9,27 @@ def generate(length):
     return l
 
 def remove_duplicates(l):
-    r = []
-    for elem in l:
-        if elem not in r:
-            r.append(elem)                
-    return r
+  #  r = []
+  #  for elem in l:
+  #      if elem not in r:
+  #          r.append(elem)                
+  #  return r
+    l.sort()
+
+    for i in range(len(l) - 1, 0, -1):
+        if l[i] == l[i - 1]:
+            del l[i]
+    return l
+        
 
 l = generate(random.randrange(1, max_length))
-r = remove_duplicates(l)
+#r = remove_duplicates(l)
 
 print("lista: ", end = "")
 print(*l, sep = ", ")
+
+remove_duplicates(l)
+
 print("bez duplikatow: ", end = "")
-print(*r, sep = ", ")
+print(*l, sep = ", ")
 
