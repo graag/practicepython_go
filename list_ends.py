@@ -1,6 +1,6 @@
 import random
 max_length = 10
-elem_range = 100 #do generowania list
+elem_range = 100 
 
 def ends(l):
    # e = [l[0], l[-1]]
@@ -23,7 +23,8 @@ try:
         print("domyslna")
         l = generate(random.randrange(1, max_length))
 except(ValueError):
-    print("Podawaj liczby calkowite. Rozmiar populacji powinien byc wiekszy, niz rozmiar listy.")      
+    print("Podawaj liczby calkowite. Rozmiar populacji powinien byc wiekszy, niz rozmiar listy.")     
+    quit()
 
 print("lista: ", end = "")
 print(*l, sep = ", ")

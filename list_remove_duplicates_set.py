@@ -44,7 +44,7 @@ else:
         l = data["a"]
 
     except(TypeError, ValueError):
-        print("Nieprawidlowe wartosci w liscie")
+        print("Nieprawidlowa lista")
         quit()
 
 r = remove_duplicates(l)

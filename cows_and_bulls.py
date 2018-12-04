@@ -3,17 +3,20 @@ import random
 def compare(spl1, spl2):
     cows = 0
     bulls = 0
-    scored = [0] * 4
+    scored = list(spl2[:])
 
     for i in range(4):
-        if spl1[i] == spl2[i]:
+        if spl1[i] == scored[i]:
             cows = cows + 1
-            scored[i] = 1
+            scored[i] = -1
 
     for i in range(4):
-        if spl2[i] in spl1 and scored[i] == 0:
+        try:
+            found = scored.index(spl1[i])
             bulls = bulls + 1
-            scored[i] = 1
+            scored[found] = -1
+        except(ValueError):
+            pass
 
     return [cows, bulls]
 

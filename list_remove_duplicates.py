@@ -9,11 +9,6 @@ def generate(length):
     return l
 
 def remove_duplicates(l):
-  #  r = []
-  #  for elem in l:
-  #      if elem not in r:
-  #          r.append(elem)                
-  #  return r
     l.sort()
 
     for i in range(len(l) - 1, 0, -1):
@@ -23,7 +18,6 @@ def remove_duplicates(l):
         
 
 l = generate(random.randrange(1, max_length))
-#r = remove_duplicates(l)
 
 print("lista: ", end = "")
 print(*l, sep = ", ")
