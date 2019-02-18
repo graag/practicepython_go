@@ -1,20 +1,22 @@
 import random
 
-def compare(spl1, spl2):
+def compare(inp, num):
     cows = 0
     bulls = 0
-    scored = list(spl2[:])
+    scored_inp = list(inp[:])
+    scored_num = list(num[:])
 
     for i in range(4):
-        if spl1[i] == scored[i]:
+        if inp[i] == scored_num[i]:
             cows = cows + 1
-            scored[i] = -1
+            scored_inp[i] = -1
+            scored_num[i] = -2
 
     for i in range(4):
         try:
-            found = scored.index(spl1[i])
+            found = scored_num.index(scored_inp[i])
             bulls = bulls + 1
-            scored[found] = -1
+            scored_num[found] = -2
         except(ValueError):
             pass
 
@@ -29,6 +31,7 @@ def game():
         while True:
             try:
                 inp = int(input("Podaj czterocyfrowa liczbe (0, zeby zakonczyc): "))
+
                 break
             except(ValueError):
                 pass

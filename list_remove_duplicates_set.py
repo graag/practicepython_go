@@ -1,6 +1,5 @@
 import random
 import argparse
-import sys
 import json
 
 parser = argparse.ArgumentParser(description="Remove duplicates from a list")
@@ -18,34 +17,35 @@ def generate(length, ran):
 def remove_duplicates(l):
     return list(set(l))
 
-if len(sys.argv) == 3:
-    parser.add_argument('-m', type=int, help='-m=[max_length]')
-    parser.add_argument('-r', type=int, help='-r=[elements_range]')
-    args = parser.parse_args()
+parser.add_argument('-f', '--file', type=str, help='json file containing a list of integers')
+parser.add_argument('-m', '--max', type=int, help='max length of list of random integers')
+parser.add_argument('-r', '--range', type=int, help="range of random integers' value")
 
+args = parser.parse_args()
+
+if args.file is not None:
     try:
-        length = random.randrange(1, args.m)
-    except(ValueError):
-        print("Invalid max length")
-        quit()
-
-    l = generate(length, args.r)
-    print("list: ", end = "")
-    print(*l, sep = ", ")
-
-else:
-    parser.add_argument('-f', type=str, help='-f=[filename.json]')
-    args = parser.parse_args()
-
-    try:
-        with open(args.f, 'r') as file:
-                data = json.load(file)
-
-        l = data["a"]
+        with open(args.file, 'r') as file:
+            l = json.load(file)
 
     except(TypeError, ValueError):
-        print("Nieprawidlowa lista")
+        print("Invalid list")
         quit()
+    except(FileNotFoundError):
+        print("File not found")
+        quit()
+elif args.max is not None and args.range is not None:  
+    try:
+        length = random.randrange(1, args.max)
+        l = generate(length, args.range)
+        print("list: ", end = "")
+        print(*l, sep = ", ")
+    except(ValueError):
+        print("Invalid max length or range")
+        quit()
+else:
+    parser.print_help()
+    quit()
 
 r = remove_duplicates(l)
 

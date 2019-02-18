@@ -14,16 +14,17 @@ def generate(length):
         l.append(random.randrange(elem_range))
     return l
 
+#obie opcje losują próbkę ze zwracaniem
 try:
     len = int(input("Rozmiar populacji do utworzenia listy (dla <=0 generuj w domyslny sposob): "))
     if len > 0:
         n = int(input("Rozmiar listy: "))
-        l = random.sample(range(len), n)
+        l = random.choices(range(len), k=n)
     else:
         print("domyslna")
         l = generate(random.randrange(1, max_length))
-except(ValueError):
-    print("Podawaj liczby calkowite. Rozmiar populacji powinien byc wiekszy, niz rozmiar listy.")     
+except(ValueError, TypeError):
+    print("Podawaj liczby calkowite")     
     quit()
 
 print("lista: ", end = "")
